@@ -1,0 +1,80 @@
+<div class="container mx-auto p-4">
+  <h1 class="text-2xl font-bold mb-4">Calculadora de resistencias</h1>
+
+  <div class="flex space-x-4">
+    <form [formGroup]="formulario" class="flex-1">
+      <div class="grid grid-cols-5 grid-rows-5 gap-4">
+        <div>
+          <label for="first-band" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Primera Banda</label>
+          <select id="first-band" formControlName="color1" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <option *ngFor="let color of colores" [value]="color">{{ color }}</option>
+          </select>
+        </div>
+        <div>
+          <label for="second-band" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Segunda Banda</label>
+          <select id="second-band" formControlName="color2" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <option *ngFor="let color of colores" [value]="color">{{ color }}</option>
+          </select>
+        </div>
+        <div>
+          <label for="third-band" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tercera Banda</label>
+          <select id="third-band" formControlName="color3" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <option *ngFor="let color of colores" [value]="color">{{ color }}</option>
+          </select>
+        </div>
+        <div class="col-start-2 row-start-2">
+          <p class="font-semibold">Tolerancia</p>
+          <label>
+            <input type="radio" name="tolerancia" formControlName="tolerancia" value="oro" class="mr-1"> Oro
+          </label>
+          <label>
+            <input type="radio" name="tolerancia" formControlName="tolerancia" value="plata" class="mr-1"> Plata
+          </label>
+        </div>
+        <div class="col-start-2 row-start-3">
+          <button type="button" (click)="guardarColores()" (click)="calcularValores()" [disabled]="!formulario.valid" class="w-full mt-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-semibold hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            Guardar
+          </button>
+        </div>
+        
+        <div class="col-start-2 row-start-4">
+          <button type="button" (click)="verResultados()"  class="w-full mt-4 py-2 bg-green-600 text-white rounded-lg text-sm font-semibold hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500">
+            Ver Resultados
+          </button>
+        </div>
+        
+      </div>
+    </form>
+
+    <div *ngIf="resultados.length > 0" class="flex-1 flex justify-center">
+      <div class="resultado-table-container">
+        <table class="resultado-table w-full border-collapse">
+          <thead>
+            <tr>
+              <th class="border p-2">Color 1</th>
+              <th class="border p-2">Color 2</th>
+              <th class="border p-2">Color 3</th>
+              <th class="border p-2">Tolerancia</th>
+              <th class="border p-2">Valor</th>
+              <th class="border p-2">Valor Máximo</th>
+              <th class="border p-2">Valor Mínimo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let resultado of resultados">
+              <td [ngStyle]="{'background-color': getColorCode(resultado.color1)}" class="border p-2">{{ resultado.color1 }}</td>
+              <td [ngStyle]="{'background-color': getColorCode(resultado.color2)}" class="border p-2">{{ resultado.color2 }}</td>
+              <td [ngStyle]="{'background-color': getColorCode(resultado.color3)}" class="border p-2">{{ resultado.color3 }}</td>
+              <td [ngStyle]="{'background-color': getToleranceColor(resultado.tolerancia)}" class="border p-2">
+                {{ resultado.tolerancia === 'oro' ? 'Dorado 5%' : 'Plata 10%' }}
+              </td>
+              <td class="border p-2">{{ resultado.valor }} Ω</td>
+              <td class="border p-2">{{ resultado.valorMaximo }} Ω</td>
+              <td class="border p-2">{{ resultado.valorMinimo }} Ω</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

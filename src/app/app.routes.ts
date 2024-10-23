@@ -7,7 +7,17 @@ export const routes: Routes = [
         loadChildren: () => import('./auth/features/aut.routes')
     },
     {
-        path: 'Ejemplo1',
-        loadChildren: () => import('./auth/features/aut.routes')
+        path:'formulario',
+        loadChildren:()=> import('./formularios/ejemplo1/aut.routes')
+    },
+    {
+    path: 'formulario',
+    loadChildren: () => import('./formularios/resistencia/autresistencia.routes')
+    },
+    {
+    path: 'formulario',
+    loadChildren: () => import('./formularios/empleados1/aut.routes')
     }
+
 ];
+

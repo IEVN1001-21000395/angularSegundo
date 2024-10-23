@@ -9,9 +9,5 @@ export default [
         path: 'sign-up',
         loadComponent: () => import('./sing-up/sing-up.component'),
     },
-    {
-        path: 'Ejemplo1',
-        loadComponent: () => import('./formularios/ejemplo1/ejemplo1.component'),
-    },
     
 ] as Routes;
