@@ -32,7 +32,12 @@
             <button type="submit" (click)="guardarPersonas()" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Registrar</button>
             <button type="button" (click)="cargarPersonas()"(click)=" Horasxpagar()" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Imprimir</button>
             <button type="button" (click)="buscarPorMatricula()" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Modificar</button>
-            <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Eliminar</button>
+            <button type="button" 
+            class="text-white bg-blue-500 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
+            (click)="eliminarPorMatricula()">
+            Eliminar
+          </button>
+          
           </div>
         </div>
       </form>
@@ -56,25 +61,20 @@
           </thead>
           <tbody>
             <tr *ngFor="let persona of personas">
-              <td class="border px-4 py-2">{{ persona.matricula }}</td>
-              <td class="border px-4 py-2">{{ persona.nombre }}</td>
-              <td class="border px-4 py-2">{{ persona.email }}</td>
-              <td class="border px-4 py-2">{{ persona.edad }}</td>
-              <td class="border px-4 py-2">{{ persona.horas }}</td>
-              <td class="border px-4 py-2">{{ totalPagarh }}</td>
-              <td class="border px-4 py-2">{{ totalHorasExtra }}</td>
-           
-              
-             
-              
-
-
+                <td class="border px-4 py-2">{{ persona.matricula }}</td>
+                <td class="border px-4 py-2">{{ persona.nombre }}</td>
+                <td class="border px-4 py-2">{{ persona.email }}</td>
+                <td class="border px-4 py-2">{{ persona.edad }}</td>
+                <td class="border px-4 py-2">{{ persona.horas }}</td>
+                <td class="border px-4 py-2">{{ persona.totalPagarh }}</td>
+                <td class="border px-4 py-2">{{ persona.totalHorasExtra }}</td>
+                <td class="border px-4 py-2">{{ persona.subTotal }}</td>
             </tr>
-          </tbody>
+        </tbody>
           <tfoot>
             <tr>
               <td colspan="7" class="text-right font-bold">Total a pagar:</td>
-              
+              <td class="border px-4 py-2 font-bold">{{ totalGeneral | currency:'MXN' }}</td>
               
             </tr>
           </tfoot>
