@@ -6,12 +6,12 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-list-message',
   standalone: true,
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './list-message.component.html',
   styles: ``
 })
+
 export class ListMessageComponent {
-
   constructor(public messageService: MessageserviceService){}
-
+  
 }

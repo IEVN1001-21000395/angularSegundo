@@ -1,0 +1,61 @@
+<div class="p-6 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg shadow-lg mb-6 w-full text-white">
+    <h3 class="text-2xl font-bold mb-4 text-center">Captura de Pedido</h3>
+    <form [formGroup]="pedidoForm" (ngSubmit)="agregarPizza()" class="grid grid-cols-3 gap-4">
+        <!-- Nombre -->
+        <div class="mb-4">
+            <label for="nombre" class="block font-medium mb-1">Nombre completo:</label>
+            <input class="w-full px-3 py-2 border border-purple-400 rounded-md bg-gray-50 text-black focus:outline-none focus:ring-2 focus:ring-pink-300"
+                   type="text" placeholder="Nombre completo" formControlName="nombreCliente" name="nombre" id="nombre"/>
+        </div>
+        <!-- Dirección -->
+        <div class="mb-4">
+            <label for="direccion" class="block font-medium mb-1">Dirección:</label>
+            <input class="w-full px-3 py-2 border border-purple-400 rounded-md bg-gray-50 text-black focus:outline-none focus:ring-2 focus:ring-pink-300"
+                   type="text" placeholder="Dirección" formControlName="direccion" name="direccion" id="direccion"/>
+        </div>
+        <!-- Teléfono -->
+        <div class="mb-4">
+            <label for="telefono" class="block font-medium mb-1">Teléfono:</label>
+            <input class="w-full px-3 py-2 border border-purple-400 rounded-md bg-gray-50 text-black focus:outline-none focus:ring-2 focus:ring-pink-300"
+                   type="text" placeholder="Teléfono" formControlName="telefono" name="telefono" id="telefono"/>
+        </div>
+        <!-- Fecha -->
+        <div class="mb-4">
+            <label for="fecha" class="block font-medium mb-1">Fecha:</label>
+            <input class="w-full px-3 py-2 border border-purple-400 rounded-md bg-gray-50 text-black focus:outline-none focus:ring-2 focus:ring-pink-300"
+                   type="date" formControlName="fechaCompra" name="fecha" id="fecha"/>
+        </div>
+        <!-- Tamaño de Pizza -->
+        <h4 class="col-span-3 text-lg font-semibold mt-6 mb-2">Tamaño de Pizza</h4>
+        <div class="col-span-3 flex items-center gap-4 mb-4">
+            <label class="flex items-center">
+                <input type="radio" formControlName="tamanoPizza" value="Chica" class="mr-2 bg-gray-50"/> Chica $40
+            </label>
+            <label class="flex items-center">
+                <input type="radio" formControlName="tamanoPizza" value="Mediana" class="mr-2 bg-gray-50"/> Mediana $80
+            </label>
+            <label class="flex items-center">
+                <input type="radio" formControlName="tamanoPizza" value="Grande" class="mr-2 bg-gray-50"/> Grande $120
+            </label>
+        </div>
+        <!-- Ingredientes -->
+        <h4 class="col-span-3 text-lg font-semibold mt-6 mb-2">Ingredientes</h4>
+        <div class="col-span-3 flex flex-col gap-2 mb-4">
+            <label class="flex items-center">
+                <input type="checkbox" formControlName="jamon" class="mr-2 bg-gray-50"/> Jamón $10
+            </label>
+            <label class="flex items-center">
+                <input type="checkbox" formControlName="pina" class="mr-2 bg-gray-50"/> Piña $10
+            </label>
+            <label class="flex items-center">
+                <input type="checkbox" formControlName="champinones" class="mr-2 bg-gray-50"/> Champiñones $10
+            </label>
+        </div>
+        <!-- Cantidad de Pizzas -->
+        <div class="mb-4 col-span-3">
+            <input class="w-full px-3 py-2 border border-purple-400 rounded-md bg-gray-50 text-black focus:outline-none focus:ring-2 focus:ring-pink-300"
+                   type="number" placeholder="Número de Pizzas" formControlName="cantidadPizzas"/>
+        </div>
+        <button class="col-span-3 w-full bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 px-4 rounded-md" type="submit">Agregar</button>
+    </form>
+</div>

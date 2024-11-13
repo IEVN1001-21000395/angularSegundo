@@ -1,0 +1,75 @@
+<div class="contenedor mx-auto p-4">
+  <h1 class="titulo text-2xl font-bold mb-4">Resistencias</h1>
+
+  <!-- Formulario -->
+  <form [formGroup]="formulario" (ngSubmit)="guardarColores()">
+    <!-- Primera Banda -->
+    <div class="campo-formulario mb-4">
+      <label for="color1" class="bloque mb-1">Primera Banda:</label>
+      <select id="color1" formControlName="color1" class="entrada bg-gray-200 border rounded-md p-2 w-full">
+        <option value="" disabled selected>Seleccionar un color</option>
+        <option *ngFor="let color of colores" [value]="color">{{ color }}</option>
+      </select>
+    </div>
+
+    <!-- Segunda Banda -->
+    <div class="campo-formulario mb-4">
+      <label for="color2" class="bloque mb-1">Segunda Banda:</label>
+      <select id="color2" formControlName="color2" class="entrada bg-gray-200 border rounded-md p-2 w-full">
+        <option value="" disabled selected>Seleccionar un color</option>
+        <option *ngFor="let color of colores" [value]="color">{{ color }}</option>
+      </select>
+    </div>
+
+    <!-- Tercera Banda -->
+    <div class="campo-formulario mb-4">
+      <label for="color3" class="bloque mb-1">Tercera Banda:</label>
+      <select id="color3" formControlName="color3" class="entrada bg-gray-200 border rounded-md p-2 w-full">
+        <option value="" disabled selected>Seleccionar un color</option>
+        <option *ngFor="let color of colores" [value]="color">{{ color }}</option>
+      </select>
+    </div>
+
+    <!-- Tolerancia -->
+    <div class="campo-formulario mb-4">
+      <label for="tolerancia" class="bloque mb-1">Tolerancia:</label>
+      <select id="tolerancia" formControlName="tolerancia" class="entrada bg-gray-200 border rounded-md p-2 w-full">
+        <option value="" disabled selected>Seleccionar una tolerancia</option>
+        <option *ngFor="let tolerancia of tolerancias" [value]="tolerancia">{{ tolerancia }}</option>
+      </select>
+    </div>
+
+    <!-- Botones -->
+    <button type="submit" [disabled]="formulario.invalid" class="boton bg-blue-500 text-white rounded-md px-4 py-2 mr-2">Registrar</button>
+    <button type="button" (click)="cargarDatos()" class="boton bg-green-500 text-white rounded-md px-4 py-2">Cargar Registros</button>
+  </form>
+
+  <!-- Tabla de Registros -->
+  <div class="contenedor-tabla mt-4" *ngIf="resultado || datosResistencias.length">
+    <h2 class="subtitulo text-xl font-semibold">Registros de Resistencias</h2>
+    <table class="tabla min-w-full text-center border">
+      <thead>
+        <tr>
+          <th class="columna border">Banda 1</th>
+          <th class="columna border">Banda 2</th>
+          <th class="columna border">Banda 3</th>
+          <th class="columna border">Tolerancia</th>
+          <th class="columna border">Valor (Ω)</th>
+          <th class="columna border">Valor Máx (Ω)</th>
+          <th class="columna border">Valor Mín (Ω)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let registro of datosResistencias">
+          <td [style.background]="obtenerColor(registro.color1)">{{ registro.color1 }}</td>
+          <td [style.background]="obtenerColor(registro.color2)">{{ registro.color2 }}</td>
+          <td [style.background]="obtenerColor(registro.color3)">{{ registro.color3 }}</td>
+          <td [style.background]="obtenerColorTolerancia(registro.tolerancia)">{{ registro.tolerancia }}</td>
+          <td>{{ registro.valor }}</td>
+          <td>{{ registro.valorMaximo }}</td>
+          <td>{{ registro.valorMinimo }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

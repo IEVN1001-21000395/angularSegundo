@@ -1,0 +1,70 @@
+<div class="grid grid-cols-1 gap-4">
+  <div>
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="max-w-sm mx-auto">
+      <!-- Primera Banda -->
+      <div class="mb-5">
+        <label for="color1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Primera banda:</label>
+        <select id="color1" formControlName="color1" class="bg-gray-50 border text-gray-900 rounded-lg p-2.5">
+          <option *ngFor="let color of colors" [value]="color.value" [class.bg-red-500]="color.name === 'Rojo'" [class.bg-blue-500]="color.name === 'Azul'">{{ color.name }}</option>
+        </select>
+      </div>
+      
+      <!-- Segunda Banda -->
+      <div class="mb-5">
+        <label for="color2" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Segunda banda:</label>
+        <select id="color2" formControlName="color2" class="bg-gray-50 border text-gray-900 rounded-lg p-2.5">
+          <option *ngFor="let color of colors" [value]="color.value" [class.bg-red-500]="color.name === 'Rojo'" [class.bg-blue-500]="color.name === 'Azul'">{{ color.name }}</option>
+        </select>
+      </div>
+      
+      <!-- Multiplicador -->
+      <div class="mb-5">
+        <label for="color3" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Multiplicador:</label>
+        <select id="color3" formControlName="color3" class="bg-gray-50 border text-gray-900 rounded-lg p-2.5">
+          <option *ngFor="let color of colors" [value]="color.multiplier" [class.bg-red-500]="color.name === 'Rojo'" [class.bg-blue-500]="color.name === 'Azul'">{{ color.name }}</option>
+        </select>
+      </div>
+      
+      <!-- Tolerancia -->
+      <div class="mb-5">
+        <label for="tolerance" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tolerancia:</label>
+        <select id="tolerance" formControlName="tolerance" class="bg-gray-50 border text-gray-900 rounded-lg p-2.5">
+          <option *ngFor="let tolerance of tolerances" [value]="tolerance.value" [class.bg-gold]="tolerance.name === 'Oro'" [class.bg-silver]="tolerance.name === 'Plata'">{{ tolerance.name }}</option>
+        </select>
+      </div>
+      
+      <!-- Botón -->
+      <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 rounded-lg px-5 py-2.5 text-center">
+        Registrar
+      </button>
+    </form>
+  </div>
+
+  <!-- Tabla de resultados -->
+  <div *ngIf="resistorData.length > 0" class="mt-5">
+    <table class="min-w-full text-center border-collapse">
+      <thead>
+        <tr>
+          <th class="border p-2">Color 1</th>
+          <th class="border p-2">Color 2</th>
+          <th class="border p-2">Multiplicador</th>
+          <th class="border p-2">Tolerancia</th>
+          <th class="border p-2">Valor</th>
+          <th class="border p-2">Valor Máximo</th>
+          <th class="border p-2">Valor Mínimo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of resistorData">
+          <td class="border p-2">{{ data.color1.name }}</td>
+          <td class="border p-2">{{ data.color2.name }}</td>
+          <td class="border p-2">{{ data.color3.name }}</td>
+          <td class="border p-2">{{ data.tolerance.name }}</td>
+          <td class="border p-2">{{ data.value }} Ω</td>
+          <td class="border p-2">{{ data.maxValue }} Ω</td>
+          <td class="border p-2">{{ data.minValue }} Ω</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

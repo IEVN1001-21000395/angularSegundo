@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-temap',
+  selector: 'app-agregar',
   standalone: true,
   imports: [],
-  templateUrl: './temap.component.html',
+  templateUrl: './agregar.component.html',
   styles: ``
 })
-export class TemapComponent {
+export class AgregarComponent {
 
 }

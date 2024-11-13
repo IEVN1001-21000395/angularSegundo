@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-temap',
+  selector: 'app-sign-in',
   standalone: true,
   imports: [],
-  templateUrl: './temap.component.html',
+  templateUrl: './sign-in.component.html',
   styles: ``
 })
-export class TemapComponent {
+export default class SignInComponent {
 
 }
